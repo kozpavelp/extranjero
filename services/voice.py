@@ -6,7 +6,7 @@ from pydub import AudioSegment
 from config_data.config import AiConfig, load_ai
 
 
-ai_config: AiConfig = load_ai('/home/ppk/study/extranjerobot/.env')
+ai_config: AiConfig = load_ai('./.env')
 
 openai.api_key = ai_config.ai.token
 
