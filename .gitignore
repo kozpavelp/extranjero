@@ -4,3 +4,4 @@ venv/
 .vscode/
 __pycache__/
 .mypy_cache/
+voice_files/

@@ -8,6 +8,7 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from lexicon.lexicon import LEXICON
 from services.parser import soldol
 from services.voice import voice_to_text, save_mp3
+from services.deleter import temp_del
 
 
 router: Router = Router()
@@ -22,7 +23,7 @@ async def course(message: Message):
 @router.message(F.voice)
 async def voice_detected(message: Message, bot: Bot):
     voice_path = await save_mp3(bot, message.voice)
-
+    await temp_del()
     yes_btn = InlineKeyboardButton(text=LEXICON['yes'], callback_data=f'yes:{voice_path}')
     keyboard = InlineKeyboardMarkup(inline_keyboard=[[yes_btn]])
 
