@@ -34,6 +34,5 @@ async def voice_transcript(callback: CallbackQuery):
     transcripted = await voice_to_text(voice_path)
     if os.path.exists(voice_path):
         os.remove(voice_path)
-        print('voice_path')
     if transcripted:
         await callback.message.edit_text(text=transcripted)
