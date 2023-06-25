@@ -4,7 +4,6 @@ from aiogram import Router, F, Bot
 from aiogram.filters import Text
 from aiogram.types import Message, CallbackQuery
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from config_data.config import redis_module
 
 from database.dict_db import user_db, user_dict_template
 from lexicon.lexicon import LEXICON
@@ -48,7 +47,7 @@ async def voice_transcript(callback: CallbackQuery):
 ############################### ПОИСК КВАРТИР ##########################################################
 ############################### Facebook ###############################################################
 @router.message(Text(text=['квартиры', 'Квартиры']))
-async def truj_source_choice(message: Message = None, callback: CallbackQuery = None):
+async def truj_source_choice(message: Message):
     kb = source_choice()
     if message.from_user.id not in user_db:
         print(f'{message.from_user.id} added to DB')
