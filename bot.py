@@ -8,7 +8,7 @@ from handlers import user_handlers
 async def main() -> None:
     config: Config = load_config(None)
 
-    bot: Bot = Bot(token=config.tgbot.token)
+    bot: Bot = Bot(token=config.tgbot.token, parse_mode='html')
     dp: Dispatcher = Dispatcher()
 
     dp.include_router(user_handlers.router)

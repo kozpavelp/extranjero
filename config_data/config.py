@@ -1,6 +1,7 @@
 from environs import Env
 from dataclasses import dataclass
-
+import aioredis
+import asyncio
 
 @dataclass
 class TgBot:
@@ -30,3 +31,10 @@ def load_ai(path: str | None) -> AiConfig:
     env = Env()
     env.read_env(path)
     return AiConfig(ai=OpenAI(token=env('OPENAI_TOKEN')))
+
+
+async def redis_module():
+    redis = aioredis.from_url('redis://localhost')
+    await redis.set('key', 'value')
+    value = await redis.gey('key')
+    print(value)
