@@ -53,6 +53,7 @@ async def truj_source_choice(message: Message):
         print(f'{message.from_user.id} added to DB')
         user_db[message.from_user.id] = deepcopy(user_dict_template)
     user_db[message.from_user.id]['page'] = 1
+
     await message.answer(text='На каком сайте ищем?',
                          reply_markup=kb)
 

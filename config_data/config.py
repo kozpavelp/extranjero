@@ -1,6 +1,6 @@
 from environs import Env
 from dataclasses import dataclass
-
+from redis import Redis
 
 @dataclass
 class TgBot:
@@ -31,3 +31,7 @@ def load_ai(path: str | None) -> AiConfig:
     env.read_env(path)
     return AiConfig(ai=OpenAI(token=env('OPENAI_TOKEN')))
 
+
+def redis_connection():
+    redis: Redis = Redis(host='localhost')
+    return redis
